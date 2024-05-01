@@ -9,10 +9,6 @@ import { Generation8 } from "./pokemons/Generation-8";
 import { Generation9 } from "./pokemons/Generation-9";
 import { Language } from "@/app/LanguageContext";
 
-export interface LocalizedPokemonType {
-  [language: string]: Language;
-}
-
 export interface IPokemonType {
   en: string;
   de: string;

@@ -3,7 +3,7 @@ import { cn } from "@/utils/cn";
 import Image from 'next/image'
 import { IPokemon, IPokemonType, IPokemonName } from "@/api/pokedex";
 import { Language } from "@/app/LanguageContext";
-import { i18n } from '@/api/i18n';
+import { i18n } from '@/app/i18n';
 
 export const PokemonGrid = ({
   className,
@@ -77,9 +77,9 @@ export const PokemonCard = ({
         ))}
       </div>
 
-      <div className="w-full h-full object-fit pt-5">
+      <div className="aspect-square pt-5">
         <Image
-          className="w-48 h-48 object-fit md:max-h-full md:max-w-full"
+          className="aspect-square w-48 object-fit"
           src={'/images/pokemons/' + pokemon.id + '.png'}
           width={300} height={300} alt={pokemon.names[language]} />
       </div>

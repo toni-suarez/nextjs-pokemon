@@ -1,5 +1,5 @@
 "use client";
-import { i18n } from "@/api/i18n";
+import { i18n } from "@/app/i18n";
 import { useLanguage } from '@/app/LanguageContext';
 
 export default function Footer() {
