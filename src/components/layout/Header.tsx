@@ -17,6 +17,7 @@ let navigation = [
   { name: '6', href: '#6' },
   { name: '7', href: '#7' },
   { name: '8', href: '#8' },
+  { name: '9', href: '#9' },
 ]
 
 function classNames(...classes: any[]) {
@@ -69,7 +70,7 @@ export default function Header() {
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -113,7 +114,7 @@ export default function Header() {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2">
+            <div className="px-4 py-3 flex justify-between items-center w-full">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
@@ -128,12 +129,14 @@ export default function Header() {
                   {item.name}
                 </Disclosure.Button>
               ))}
-              <Disclosure.Button onClick={() => { }}>
-                Deutsch
-              </Disclosure.Button>
-              <Disclosure.Button onClick={() => { }}>
-                Englisch
-              </Disclosure.Button>
+              <div className="absolute top-2 right-2 space-x-5 p-3">
+                <Disclosure.Button onClick={() => { setLanguage('de') }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className='w-5 h-5' viewBox="0 0 5 3"><path d="M0 0h5v3H0z" /><path fill="#D00" d="M0 1h5v2H0z" /><path fill="#FFCE00" d="M0 2h5v1H0z" /></svg>
+                </Disclosure.Button>
+                <Disclosure.Button onClick={() => { setLanguage('en') }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className='w-5 h-5' viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z" /></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z" /></clipPath><g clipPath="url(#a)"><path fill="#012169" d="M0 0v30h60V0z" /><path stroke="#fff" strokeWidth="6" d="m0 0 60 30m0-30L0 30" /><path stroke="#C8102E" strokeWidth="4" d="m0 0 60 30m0-30L0 30" clipPath="url(#b)" /><path stroke="#fff" strokeWidth="10" d="M30 0v30M0 15h60" /><path stroke="#C8102E" strokeWidth="6" d="M30 0v30M0 15h60" /></g></svg>
+                </Disclosure.Button>
+              </div>
             </div>
           </Disclosure.Panel>
         </>
