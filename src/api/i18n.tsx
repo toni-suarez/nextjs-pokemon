@@ -1,8 +1,10 @@
 export const i18n = {
   en: {
     header_start_button: "start",
-    hero_cta_button: "Disover now!",
+    hero_cta_button: "Discover now!",
     generation: 'generation',
+    size: 'height',
+    weight: 'weight',
     disclaimer: {
       trademark: "All Pokémon-related content are registered trademarks of Nintendo, Game Freak, and/or The Pokémon Company.",
       usage: "The use of Pokémon content on this website is only for non-commercial purposes or according to the terms of the rights holders.",
@@ -15,6 +17,8 @@ export const i18n = {
     header_start_button: "Start",
     hero_cta_button: "Jetzt entdecken!",
     generation: 'Generation',
+    size: 'Größe',
+    weight: 'Gewicht',
     disclaimer: {
       trademark: "Alle Pokémon-bezogenen Inhalte sind eingetragene Marken von Nintendo, Game Freak und/oder The Pokémon Company.",
       usage: "Die Verwendung von Pokémon-Inhalten auf dieser Webseite erfolgt nur zu nicht-kommerziellen Zwecken oder gemäß den Nutzungsbedingungen der Rechteinhaber.",

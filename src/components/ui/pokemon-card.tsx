@@ -3,6 +3,7 @@ import { cn } from "@/utils/cn";
 import Image from 'next/image'
 import { IPokemon, IPokemonType, IPokemonName } from "@/api/pokedex";
 import { Language } from "@/app/LanguageContext";
+import { i18n } from '@/api/i18n';
 
 export const PokemonGrid = ({
   className,
@@ -88,8 +89,8 @@ export const PokemonCard = ({
           {pokemon.names[language]}
         </div>
 
-        <div className="text-xs font-sans mb-2 mt-3 w-full text-center">
-          Größe: {dmToM(pokemon.height)}, Gewicht: {hgToKg(pokemon.weight)}
+        <div className="text-xs font-sans mb-2 mt-3 w-full text-center capitalize">
+          {i18n[language].size}: {dmToM(pokemon.height)}, {i18n[language].weight}: {hgToKg(pokemon.weight)}
         </div>
 
         <button className={`absolute bottom-2 right-2`} onClick={(event) => playAudio(pokemon.id)}>
