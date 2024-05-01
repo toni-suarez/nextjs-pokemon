@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { cn } from "@/utils/cn";
 import Image from 'next/image'
 import { IPokemon, IPokemonType, IPokemonName } from "@/api/pokedex";
@@ -41,15 +42,15 @@ export const PokemonCard = ({
     return (hg / 10) + ' kg';
   }
 
-  function hasAudio(id: number) {
-    const audioElement = document.querySelector<HTMLAudioElement>('#audio-' + id);
-    if (audioElement) {
-      return audioElement.networkState === 1 || audioElement.networkState === 2;
-    }
-    return false;
-  }
+  const [audioLoaded, setAudioLoaded] = useState(false);
 
-  const shouldDisplayButton = hasAudio(pokemon.id);
+  function loadAudio(id: number): void {
+    const audioElement = document.querySelector<HTMLAudioElement>('#audio-' + id);
+    if (audioElement && audioLoaded === false) {
+      audioElement.load();
+      setAudioLoaded(true);
+    }
+  }
 
   function playAudio(id: number): void {
     const audioElement = document.querySelector<HTMLAudioElement>('#audio-' + id);
@@ -62,11 +63,19 @@ export const PokemonCard = ({
 
   return (
     <div
+      onMouseEnter={() => loadAudio(pokemon.id)}
       className={cn(
         "rounded-xl flex flex-col p-5 justify-center items-center relative",
         className
       )}
     >
+      <span className="font-sans opacity-85 text-xs absolute top-2 right-2">#{padIdWithZeros(pokemon.id)}</span>
+      <div className="text-xs flex flex-row space-x-2 absolute top-2 left-2">
+        {pokemon.type.map((type: IPokemonType, index: number) => (
+          <span key={index} className="block rounded">{type[language]}</span>
+        ))}
+      </div>
+
       <div className="w-full h-full object-fit pt-5">
         <Image
           className="w-48 h-48 object-fit md:max-h-full md:max-w-full"
@@ -75,7 +84,6 @@ export const PokemonCard = ({
       </div>
 
       <div className="transition duration-200 border border-transparent">
-
         <div className="text-xl font-sans font-bold mb-2 mt-8 w-full text-center">
           {pokemon.names[language]}
         </div>
@@ -84,16 +92,8 @@ export const PokemonCard = ({
           Größe: {dmToM(pokemon.height)}, Gewicht: {hgToKg(pokemon.weight)}
         </div>
 
-        <div className="text-xs flex flex-row space-x-2 absolute top-2 left-2">
-          {pokemon.type.map((type: IPokemonType, index: number) => (
-            <span key={index} className="block rounded">{type[language]}</span>
-          ))}
-        </div>
-
-        <span className="font-sans opacity-85 text-xs absolute top-2 right-2">#{padIdWithZeros(pokemon.id)}</span>
-
-        <button className={`absolute bottom-2 right-2 ${hasAudio(pokemon.id) ? '' : 'hidden'}`} onClick={(event) => playAudio(pokemon.id)}>
-          <audio className="max-w-full hidden" id={`audio-${pokemon.id}`}>
+        <button className={`absolute bottom-2 right-2`} onClick={(event) => playAudio(pokemon.id)}>
+          <audio preload="none" className="max-w-full hidden" id={`audio-${pokemon.id}`}>
             <source src={`/sounds/latest/${pokemon.id}.ogg`} type="audio/ogg" />
           </audio>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
