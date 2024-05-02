@@ -74,7 +74,7 @@ export const PokemonCard = ({
     >
       <span className="font-sans text-sm absolute top-2 right-2">#{padIdWithZeros(pokemon.id)}</span>
 
-      <div className="text-[.65rem] flex flex-row space-x-1 absolute top-2 left-3">
+      <div className="text-[.65rem] flex flex-row space-x-1 absolute top-2 left-2">
         {pokemon.type.map((type: IPokemonType, index: number) => (
           <span
             key={index}
