@@ -8,8 +8,8 @@ import Footer from '@/components/layout/Footer'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Pokémon Übersicht",
-  description: "Eine inoffzielle Übersicht vieler Pokemons created with nextjs14",
+  title: "Pokémon Übersicht - Alle Pokémon aus 9 Generationen",
+  description: "Eine inoffzielle Übersicht aller Pokémon erstellt mit nextjs 14",
 };
 
 export default function RootLayout({

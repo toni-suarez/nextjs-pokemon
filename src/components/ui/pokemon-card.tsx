@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { cn } from "@/utils/cn";
 import Image from 'next/image'
-import { IPokemon, IPokemonType, IPokemonName } from "@/api/pokedex";
+import { IPokemon, IPokemonType, pokemonTypesColors } from "@/api/pokedex";
 import { Language } from "@/app/LanguageContext";
 import { i18n } from '@/app/i18n';
 import { motion } from 'framer-motion';
@@ -68,20 +68,24 @@ export const PokemonCard = ({
       onMouseEnter={() => loadAudio(pokemon.id)}
       onTouchStart={() => loadAudio(pokemon.id)}
       className={cn(
-        "rounded-xl flex flex-col p-5 justify-center items-center relative transition group scale-100 lg:hover:scale-105 lg:hover:rotate-1 lg:hover:shadow-md",
+        "rounded-xl flex flex-col p-5 justify-center items-center relative transition group scale-100 lg:hover:-translate-y-1 lg:hover:shadow-xl",
         className
       )}
     >
-      <span className="font-sans opacity-85 text-xs absolute top-2 right-2">#{padIdWithZeros(pokemon.id)}</span>
+      <span className="font-sans text-sm absolute top-2 right-2">#{padIdWithZeros(pokemon.id)}</span>
 
       <div className="text-[.65rem] flex flex-row space-x-1 absolute top-2 left-3">
         {pokemon.type.map((type: IPokemonType, index: number) => (
-          <span key={index} className="block rounded">{type[language]}</span>
+          <span
+            key={index}
+            className={`block px-1 rounded-md ${pokemonTypesColors[type['en']].textColor} ${pokemonTypesColors[type['en']].bgColor}`}>
+            {type[language]}
+          </span>
         ))}
       </div>
 
       <div
-        className="transition aspect-square pt-5 group-hover:lg:scale-110 group-hover:lg:-rotate-1">
+        className="transition aspect-square pt-5 group-hover:lg:scale-110">
         <Image
           className="aspect-square w-48 object-fit"
           src={'/images/pokemons/' + pokemon.id + '.png'}

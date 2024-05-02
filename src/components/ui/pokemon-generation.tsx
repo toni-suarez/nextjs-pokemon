@@ -43,21 +43,6 @@ export const PokemonGeneration = ({
   }, [generation, isInView, pokemonData]);
 
   if (!pokemonData) {
-    let colors = [
-      "--sky-300",
-      "--pink-300",
-      "--green-300",
-      "--yellow-300",
-      "--red-300",
-      "--purple-300",
-      "--blue-300",
-      "--indigo-300",
-      "--violet-300",
-    ];
-    const getRandomColor = () => {
-      return colors[Math.floor(Math.random() * colors.length)];
-    };
-
     return (
       <section ref={ref} id={generation.toString()} className="py-24 min-h-96 anchor bg-amber-400"></section>
     );
