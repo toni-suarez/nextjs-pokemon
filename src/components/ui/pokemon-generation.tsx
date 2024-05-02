@@ -29,7 +29,7 @@ export const PokemonGeneration = ({
 }) => {
   const [pokemonData, setPokemonData] = useState<IPokemonGenerationProps>();
   const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "0px 0px 1000px 0px" })
+  const isInView = useInView(ref, { once: true, margin: "0px 0px 5000px 0px" })
 
   useEffect(() => {
     const fetchData = async () => {
