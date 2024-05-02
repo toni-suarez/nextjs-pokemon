@@ -86,7 +86,7 @@ export const PokemonCard = ({
           width={300} height={300} alt={pokemon.names[language]} />
       </div>
 
-      <div className="text-xl font-sans font-bold mb-10 mt-8 w-full text-center">
+      <div className="text-xl font-sans font-bold mb-10 mt-3 lg:mt-8 w-full text-center">
         {pokemon.names[language]}
       </div>
 
