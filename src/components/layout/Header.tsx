@@ -103,7 +103,7 @@ export default function Header() {
                             item.href === `#${currentMenuItem}`
                               ? `${currentBgColor} text-black ${item.href === '#start' ? 'text-white' : ''}`
                               : `${textColor} hover:bg-white hover:text-black`,
-                            'rounded-md px-3 py-2 text-sm font-medium capitalize'
+                            'transition rounded-md px-3 py-2 text-sm font-medium capitalize'
                           )}
                           aria-current={item.href === `#${currentMenuItem}` ? 'page' : undefined}
                         >

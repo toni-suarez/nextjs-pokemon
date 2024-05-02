@@ -1,30 +1,14 @@
 "use client";
-
-import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { i18n } from '@/app/i18n';
 import { useLanguage } from './LanguageContext';
 import { HeroWords } from '@/api/HeroWords';
-import { IPokemon, getPokemons } from '@/api/pokedex';
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
-import { PokemonGrid, PokemonCard } from "@/components/ui/pokemon-card";
-import { motion, useScroll } from "framer-motion";
+import { PokemonGeneration } from '@/components/ui/pokemon-generation';
+import { motion } from "framer-motion";
 
 export default function Home() {
-  const [pokemonData, setPokemonData] = useState<any[]>([]);
   const { language } = useLanguage();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let pokemonData = await getPokemons();
-        setPokemonData(pokemonData);
-      } catch (error) { }
-    };
-
-    fetchData();
-    return () => { };
-  }, []);
 
   return (
     <main>
@@ -59,34 +43,13 @@ export default function Home() {
         </a>
       </section>
 
-      {
-        pokemonData.map((generation, index) => (
-          <section
-            data-bg-color={`${generation.colors.section}`}
-            data-current-nav-color={`${generation.colors.card}`}
-            data-text-color={`${generation.colors.textColor}`}
-            id={generation.id}
-            className={`py-16 anchor ${generation.colors.section}`}
-            key={index}>
+      {[...Array(9)].map((_, index) => (
+        <PokemonGeneration
+          key={index + 1}
+          generation={index + 1}
+          language={language} />
+      ))}
 
-            <h2 className={`${generation.colors.textColor} text-3xl md:text-7xl tracking-tight font-bold text-center mb-16 capitalize`}>
-              {generation.id}. {i18n[language].generation}
-            </h2>
-
-            <PokemonGrid>
-              {generation.results.map((pokemon: IPokemon, i: number) => (
-                <PokemonCard
-                  pokemon={pokemon}
-                  language={language}
-                  key={pokemon.id}
-                  id={pokemon.id}
-                  className={`text-black/80 ${generation.colors.card}`}
-                />
-              ))}
-            </PokemonGrid>
-          </section>
-        ))
-      }
     </main >
   );
 }
