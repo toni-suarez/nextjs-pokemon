@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image';
+import Link from 'next/link';
 import { useLanguage } from '@/app/LanguageContext';
 import { i18n } from '@/app/i18n';
 
@@ -88,7 +89,9 @@ export default function Header() {
                       : `flex opacity-1`,
                     'transition flex-shrink-0 items-center font-bold'
                   )}>
-                    <Image src="/images/pokemon_logo.png" width={100} height={60} alt="" />
+                    <Link href="#start">
+                      <Image src="/images/pokemon_logo.png" width={100} height={60} alt="" />
+                    </Link>
                   </div>
                   <div className="hidden sm:ml-auto sm:flex">
                     <div className="flex space-x-4">
@@ -129,8 +132,10 @@ export default function Header() {
                     as="a"
                     href={item.href}
                     className={classNames(
-                      item.href === `#${currentMenuItem}` ? `${currentBgColor} text-black` : `${textColor} hover:bg-white hover:text-black`,
-                      'rounded-md px-3 py-2 text-sm font-medium'
+                      item.href === `#${currentMenuItem}`
+                        ? `${currentBgColor} text-black ${item.href === '#start' ? 'text-white' : ''}`
+                        : `${textColor} hover:bg-white hover:text-black`,
+                      'rounded-md px-3 py-2 text-sm font-medium capitalize'
                     )}
                     aria-current={item.href === `#${currentMenuItem}` ? 'page' : undefined}
                   >

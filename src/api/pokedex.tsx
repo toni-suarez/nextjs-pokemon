@@ -7,7 +7,6 @@ import { Generation6 } from "./pokemons/Generation-6";
 import { Generation7 } from "./pokemons/Generation-7";
 import { Generation8 } from "./pokemons/Generation-8";
 import { Generation9 } from "./pokemons/Generation-9";
-import { Language } from "@/app/LanguageContext";
 
 export interface IPokemonType {
   en: string;
@@ -48,33 +47,19 @@ export interface IPokemon {
 
 export async function getPokemons() {
   try {
-    const generations = [
-      { data: Generation1, bgColor: 'bg-amber-400', bgColorLight: 'bg-amber-200', textColor: 'text-black' },
-      { data: Generation2, bgColor: 'bg-blue-500', bgColorLight: 'bg-blue-200', textColor: 'text-white' },
-      { data: Generation3, bgColor: 'bg-green-500', bgColorLight: 'bg-green-200', textColor: 'text-white' },
-      { data: Generation4, bgColor: 'bg-yellow-500', bgColorLight: 'bg-yellow-200', textColor: 'text-black' },
-      { data: Generation5, bgColor: 'bg-gray-800', bgColorLight: 'bg-gray-400', textColor: 'text-white' },
-      { data: Generation6, bgColor: 'bg-orange-500', bgColorLight: 'bg-orange-200', textColor: 'text-black' },
-      { data: Generation7, bgColor: 'bg-purple-500', bgColorLight: 'bg-purple-200', textColor: 'text-white' },
-      { data: Generation8, bgColor: 'bg-teal-500', bgColorLight: 'bg-teal-200', textColor: 'text-white' },
-      { data: Generation9, bgColor: 'bg-pink-500', bgColorLight: 'bg-pink-200', textColor: 'text-white' }
+    const pokemons = [
+      { id: 1, results: Generation1, colors: { section: 'bg-amber-400', card: 'bg-amber-200', textColor: 'text-black' } },
+      { id: 2, results: Generation2, colors: { section: 'bg-blue-500', card: 'bg-blue-200', textColor: 'text-white' } },
+      { id: 3, results: Generation3, colors: { section: 'bg-green-500', card: 'bg-green-200', textColor: 'text-white' } },
+      { id: 4, results: Generation4, colors: { section: 'bg-yellow-500', card: 'bg-yellow-200', textColor: 'text-black' } },
+      { id: 5, results: Generation5, colors: { section: 'bg-gray-800', card: 'bg-gray-400', textColor: 'text-white' } },
+      { id: 6, results: Generation6, colors: { section: 'bg-orange-500', card: 'bg-orange-200', textColor: 'text-black' } },
+      { id: 7, results: Generation7, colors: { section: 'bg-purple-500', card: 'bg-purple-200', textColor: 'text-white' } },
+      { id: 8, results: Generation8, colors: { section: 'bg-teal-500', card: 'bg-teal-200', textColor: 'text-white' } },
+      { id: 9, results: Generation9, colors: { section: 'bg-pink-500', card: 'bg-pink-200', textColor: 'text-white' } }
     ];
 
-    const pokemonPromises = generations.map(async (generation, index) => {
-      return {
-        id: index + 1,
-        colors: {
-          section: generation.bgColor,
-          card: generation.bgColorLight,
-          textColor: generation.textColor
-        },
-        results: generation.data
-      };
-    });
-
-    const allPokemons = await Promise.all(pokemonPromises);
-
-    return allPokemons;
+    return pokemons;
   } catch (error) {
     console.error('Error fetching pokemons:', error);
     throw error;
