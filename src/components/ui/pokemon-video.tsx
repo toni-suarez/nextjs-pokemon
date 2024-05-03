@@ -54,7 +54,9 @@ export const PokemonVideo = ({
         allowFullScreen></iframe>
 
       <div className='text-xs flex flex-col mt-3 text-right'>
-        <span>{i18n[language].video_source}: Youtube; &quot;{pokemonVideo.snippet.title}&quot; ({i18n[language].channel}: &quot;{pokemonVideo.snippet.channelTitle}&quot;)</span>
+        <span>
+          {`${i18n[language].video_source}: Youtube; "${pokemonVideo.snippet.title}" (${i18n[language].channel}: "${pokemonVideo.snippet.channelTitle}")`}
+        </span>
       </div>
     </div>
   );
