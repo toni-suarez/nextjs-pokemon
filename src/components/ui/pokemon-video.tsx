@@ -37,7 +37,7 @@ export const PokemonVideo = ({
 
   if (!pokemonVideo) {
     return (
-      <p>Kein Video gefunden {pokemon}.</p>
+      <p>Kein Video für {pokemon} gefunden.</p>
     );
   }
 

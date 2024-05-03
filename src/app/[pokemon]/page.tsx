@@ -47,8 +47,10 @@ export default function Home({ params }: { params: { pokemon: string } }) {
 
   return (
     <main className={`${textColor} ${bgColor}`}>
-      <Link className={`fixed z-20 top-24 shadow-lg left-10 text-sm px-2 py-1 rounded-md ${cardColor} text-black`} href="/">
-        {i18n[language].back}
+      <Link className={`hidden lg:flex fixed z-50 top-16 shadow-lg left-5 text-sm p-2 rounded-full border-white border ${bgColor} ${textColor} hover:bg-white hover:text-black`} href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
       </Link>
       <section
         data-bg-color={`${bgColor}`}

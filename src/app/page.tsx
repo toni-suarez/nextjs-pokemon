@@ -17,7 +17,7 @@ export default function Home() {
         data-current-nav-color={`bg-red-500`}
         data-text-color={`text-white`}
         id="start"
-        className="relative anchor flex flex-col h-[95vmin] items-center justify-center bg-red-500 text-white px-4 md:px-0">
+        className="relative anchor flex flex-col items-center justify-center bg-red-500 text-white px-4 md:px-0 py-28 lg:py-40">
 
         <motion.div
           className='origin-center'
