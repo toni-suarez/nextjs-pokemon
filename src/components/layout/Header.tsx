@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Disclosure } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/app/LanguageContext';
@@ -64,7 +64,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`transition sticky top-0 z-80 ${textColor} ${bgColor}`}>
+    <header className={`transition fixed inset-x-0 top-0 z-50 ${textColor} ${bgColor}`}>
       <Disclosure as="nav">
         {({ open }) => (
           <>

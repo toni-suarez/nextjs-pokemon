@@ -29,7 +29,6 @@ export default function Home({ params }: { params: { pokemon: string } }) {
     const fetchData = async () => {
       let data = await fetchPokemonData(params.pokemon);
       setPokemonData(data);
-      console.log(data)
     };
 
     fetchData();
@@ -65,6 +64,7 @@ export default function Home({ params }: { params: { pokemon: string } }) {
               initial={{ rotate: 2, scale: 0.9 }}
               animate={{ rotate: 0, scale: 1 }}>
               <Image
+                priority={true}
                 className="aspect-square w-[500px] object-fit mx-auto"
                 src={`/images/pokemons/${pokemonData.results.id}.png`}
                 width={800}
@@ -104,7 +104,12 @@ export default function Home({ params }: { params: { pokemon: string } }) {
           </div>
         </div>
       </section>
-      <section className="pb-48 flex justify-center">
+      <section
+        data-bg-color={`${bgColor}`}
+        data-current-nav-color={`bg-red-500`}
+        data-text-color={`text-white`}
+        id="video"
+        className={`anchor flex flex-col pb-64 items-center justify-center px-4 md:px-0 z-0`}>
         <PokemonVideo pokemon={pokemonData.results.names[language]} language={language}></PokemonVideo>
       </section>
     </main >

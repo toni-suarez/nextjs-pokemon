@@ -27,7 +27,6 @@ export const PokemonVideo = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(pokemon);
       const data = await fetchPokemonVideo(pokemon);
       setPokemonVideo(data);
     };
@@ -43,9 +42,9 @@ export const PokemonVideo = ({
   }
 
   return (
-    <section className='max-w-5xl w-full h-auto aspect-video'>
+    <div className='max-w-5xl w-full h-auto aspect-video'>
       <iframe
-        className='w-full h-full aspect-video'
+        className='w-full h-full aspect-video z-10'
         width="560"
         height="315"
         src={`https://www.youtube-nocookie.com/embed/${pokemonVideo.videoId}`}
@@ -57,7 +56,6 @@ export const PokemonVideo = ({
       <div className='text-xs flex flex-col mt-3 text-right'>
         <span>{i18n[language].video_source}: Youtube; &quot;{pokemonVideo.snippet.title}&quot; ({i18n[language].channel}: &quot;{pokemonVideo.snippet.channelTitle}&quot;)</span>
       </div>
-    </section>
-
+    </div>
   );
 }

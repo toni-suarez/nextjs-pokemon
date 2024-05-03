@@ -27,6 +27,7 @@ export default function Home() {
           <h1 className="text-3xl md:text-8xl tracking-tight font-bold text-white	text-center">
             <Image
               src="/images/pokemon_logo.png"
+              priority={true}
               width={800}
               height={300}
               alt="Pokemon Logo" />
