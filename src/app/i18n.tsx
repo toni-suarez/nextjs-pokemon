@@ -12,7 +12,7 @@ export const i18n = {
     back: 'back',
     video_source: 'Source',
     channel: 'Channel',
-    description: "The Pokémon {name} with number #{pokeid} was discovered since the {generation} generation. It has a height of {size} m and a weight of {weight} kg. Its ability is {ability} and its color is {color}.",
+    description: "The Pokémon {name} with number <strong>#{pokeid}</strong> was discovered since the <strong>{generation} generation</strong>. It has a height of <strong>{size}</strong> and a weight of <strong>{weight}</strong>. Its ability is <strong>{ability}</strong> and its color is <strong>{color}</strong>.",
     disclaimer: {
       trademark: "All Pokémon-related content are registered trademarks of Nintendo, Game Freak, and/or The Pokémon Company.",
       usage: "The use of Pokémon content on this website is only for non-commercial purposes or according to the terms of the rights holders.",
@@ -34,7 +34,7 @@ export const i18n = {
     back: 'Zurück',
     video_source: 'Quelle',
     channel: 'Kanal',
-    description: "Das Pokémon {name} mit der Nummer <strong>#{pokeid}</strong> wurde seit der <strong>{generation}. Generation</strong> entdeckt. Es hat eine Größe von <strong>{size} m</strong> und ein Gewicht von <strong>{weight} kg</strong>. Seine Fähigkeit ist <strong>{abilitiy}</strong> und seine Farbe ist <strong>{color}</strong>.",
+    description: "Das Pokémon {name} mit der Nummer <strong>#{pokeid}</strong> wurde seit der <strong>{generation}. Generation</strong> entdeckt. Es hat eine Größe von <strong>{size}</strong> und ein Gewicht von <strong>{weight}</strong>. Seine Fähigkeit ist <strong>{abilitiy}</strong> und seine Farbe ist <strong>{color}</strong>.",
     disclaimer: {
       trademark: "Alle Pokémon-bezogenen Inhalte sind eingetragene Marken von Nintendo, Game Freak und/oder The Pokémon Company.",
       usage: "Die Verwendung von Pokémon-Inhalten auf dieser Webseite erfolgt nur zu nicht-kommerziellen Zwecken oder gemäß den Nutzungsbedingungen der Rechteinhaber.",

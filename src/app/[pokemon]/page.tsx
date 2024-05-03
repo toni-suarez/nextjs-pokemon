@@ -98,8 +98,8 @@ export default function Home({ params }: { params: { pokemon: string } }) {
                 name={pokemonData.results.names[language]}
                 pokeid={padIdWithZeros(pokemonData.results.id)}
                 generation={pokemonData.results.generation_id}
-                size={pokemonData.results.height}
-                weight={pokemonData.results.weight}
+                size={dmToM(pokemonData.results.height)}
+                weight={hgToKg(pokemonData.results.weight)}
                 color={pokemonData.results.color[language]}
                 abilitiy={pokemonData.results.abilities[language]}
                 language={language}></PokemonDescription>

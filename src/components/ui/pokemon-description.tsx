@@ -18,8 +18,8 @@ export const PokemonDescription = ({
   generation: number;
   pokeid: string;
   name: string;
-  weight: number;
-  size: number;
+  weight: string;
+  size: string;
   abilitiy: string;
   color: string;
   language: Language
@@ -29,8 +29,8 @@ export const PokemonDescription = ({
   text = text.replace('{name}', name);
   text = text.replace('{pokeid}', pokeid);
   text = text.replace('{generation}', generation.toString());
-  text = text.replace('{size}', size.toString());
-  text = text.replace('{weight}', weight.toString());
+  text = text.replace('{size}', size);
+  text = text.replace('{weight}', weight);
   text = text.replace('{abilitiy}', abilitiy);
   text = text.replace('{color}', color);
 
