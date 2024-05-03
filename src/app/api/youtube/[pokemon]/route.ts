@@ -19,7 +19,6 @@ export async function GET(request: NextRequest, context: { params: { pokemon: st
 
     return NextResponse.json({ status: 200, videoId: newData.items[0].id.videoId, snippet: newData.items[0].snippet });
   } catch (error) {
-    console.error(`Error fetching YouTube data for ${pokemon}: ${error}`);
-    return NextResponse.error(new Error(`Failed to fetch YouTube data for ${pokemon}`));
+    return NextResponse.json({ status: 500, message: error })
   }
 }
