@@ -3,13 +3,6 @@ import fs from 'fs';
 import path from 'path';
 
 const CACHE_DURATION_MS = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
-const CACHE_FOLDER_PATH = path.join(process.cwd(), 'public/cache/pokemons');
-
-function ensureCacheFolderExists() {
-  if (!fs.existsSync(CACHE_FOLDER_PATH)) {
-    fs.mkdirSync(CACHE_FOLDER_PATH, { recursive: true });
-  }
-}
 
 async function fetchYouTubeData(pokemon: string) {
   const YOUTUBE_PLAYLIST_ITEMS_API = 'https://www.googleapis.com/youtube/v3/search';
@@ -19,14 +12,14 @@ async function fetchYouTubeData(pokemon: string) {
 }
 
 function saveYouTubeDataLocally(pokemon: string, data: any) {
-  const filePath = path.join(CACHE_FOLDER_PATH, `youtube_cache_${pokemon}.json`);
+  const filePath = path.join('public/cache/pokemons', `youtube_cache_${pokemon}.json`);
   const expirationTime = Date.now() + CACHE_DURATION_MS;
   const cacheData = { expirationTime, data };
   fs.writeFileSync(filePath, JSON.stringify(cacheData));
 }
 
 function loadYouTubeDataLocally(pokemon: string) {
-  const filePath = path.join(CACHE_FOLDER_PATH, `youtube_cache_${pokemon}.json`);
+  const filePath = path.join('public/cache/pokemons', `youtube_cache_${pokemon}.json`);
   if (fs.existsSync(filePath)) {
     const cacheData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     if (cacheData.expirationTime > Date.now()) {
@@ -39,7 +32,6 @@ function loadYouTubeDataLocally(pokemon: string) {
 }
 
 export async function GET(request: NextRequest, context: { params: { pokemon: string } }) {
-  ensureCacheFolderExists();
   const pokemon: string = context.params.pokemon || '';
   let data = loadYouTubeDataLocally(pokemon);
 
