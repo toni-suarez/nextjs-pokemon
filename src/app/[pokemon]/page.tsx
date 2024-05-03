@@ -67,8 +67,8 @@ export default function Home({ params }: { params: { pokemon: string } }) {
                 priority={true}
                 className="aspect-square w-[500px] object-fit mx-auto"
                 src={`/images/pokemons/${pokemonData.results.id}.png`}
-                width={800}
-                height={800}
+                width={300}
+                height={300}
                 alt={pokemonData.results.names[language]} />
             </motion.div>
           </div>
