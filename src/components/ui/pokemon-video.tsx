@@ -44,7 +44,7 @@ export const PokemonVideo = ({
   }
 
   return (
-    <div className='max-w-5xl w-full h-auto aspect-video'>
+    <div className='max-w-7xl w-full h-auto bg-white p-4 shadow-lg rounded-md'>
       <iframe
         className='w-full h-full aspect-video z-10'
         width="560"
@@ -55,7 +55,7 @@ export const PokemonVideo = ({
         referrerPolicy='strict-origin-when-cross-origin'
         allowFullScreen></iframe>
 
-      <div className='text-xs flex flex-col mt-3 text-right'>
+      <div className='flex flex-col mt-3 text-right text-xs text-gray-800'>
         <span>
           {`${i18n[language].video_source}: Youtube; "${pokemonVideo.snippet.title}" (${i18n[language].channel}: "${pokemonVideo.snippet.channelTitle}")`}
         </span>

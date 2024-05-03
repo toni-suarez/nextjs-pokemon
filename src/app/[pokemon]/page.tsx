@@ -49,17 +49,20 @@ export default function Home({ params }: { params: { pokemon: string } }) {
 
   return (
     <main className={`${textColor} ${bgColor}`}>
-      <Link className={`hidden lg:flex fixed z-50 top-16 shadow-lg left-5 text-sm p-2 rounded-full border-white border ${bgColor} ${textColor} hover:bg-white hover:text-black`} href="/">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-        </svg>
-      </Link>
+      <div className='max-w-7xl mx-auto pt-20'>
+        <Link className={`hidden lg:inline-flex text-xs rounded-lg py-2 px-3 ${bgColor} ${textColor} hover:bg-white hover:text-black`} href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+          <span className='ml-2'>{i18n[language].back}</span>
+        </Link>
+      </div>
       <section
         data-bg-color={`${bgColor}`}
         data-current-nav-color={`bg-red-500`}
         data-text-color={`text-white`}
         id="detail"
-        className={`flex flex-col py-32 items-center justify-center px-4 md:px-0 z-0`}>
+        className={`flex flex-col py-32 items-center justify-center px-5 lg:px-0 z-0`}>
         <div className='w-full px-4 md:px-0 max-w-7xl mx-auto flex flex-col justify-center items-center lg:flex-row'>
           <div className='w-full lg:w-1/2 text-center'>
             <motion.div
@@ -76,7 +79,7 @@ export default function Home({ params }: { params: { pokemon: string } }) {
                 alt={pokemonData.results.names[language]} />
             </motion.div>
           </div>
-          <div className='w-full lg:w-1/2'>
+          <div className='w-full lg:w-1/2 text-center lg:text-left'>
             <h1 className="text-4xl mb-5 font-bold uppercase lg:text-7xl lg:mb-10">{pokemonData.results.names[language]}</h1>
             <div className="text-base font-normal flex flex-row space-x-3">
               {pokemonData.results.type.map((type: IPokemonType, index: number) => (
@@ -114,7 +117,9 @@ export default function Home({ params }: { params: { pokemon: string } }) {
         data-text-color={`text-white`}
         id="video"
         className={`anchor flex flex-col pb-64 items-center justify-center px-4 md:px-0 z-0`}>
-        <PokemonVideo pokemon={pokemonData.results.names[language]} language={language}></PokemonVideo>
+        <PokemonVideo
+          pokemon={pokemonData.results.names[language]}
+          language={language}></PokemonVideo>
       </section>
     </main >
   );
