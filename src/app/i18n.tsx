@@ -5,6 +5,10 @@ export const i18n = {
     generation: 'generation',
     size: 'height',
     weight: 'weight',
+    number: 'number',
+    back: 'back',
+    video_source: 'Source',
+    channel: 'Channel',
     disclaimer: {
       trademark: "All Pokémon-related content are registered trademarks of Nintendo, Game Freak, and/or The Pokémon Company.",
       usage: "The use of Pokémon content on this website is only for non-commercial purposes or according to the terms of the rights holders.",
@@ -19,6 +23,10 @@ export const i18n = {
     generation: 'Generation',
     size: 'Größe',
     weight: 'Gewicht',
+    number: 'Nummer',
+    back: 'Zurück',
+    video_source: 'Quelle',
+    channel: 'Kanal',
     disclaimer: {
       trademark: "Alle Pokémon-bezogenen Inhalte sind eingetragene Marken von Nintendo, Game Freak und/oder The Pokémon Company.",
       usage: "Die Verwendung von Pokémon-Inhalten auf dieser Webseite erfolgt nur zu nicht-kommerziellen Zwecken oder gemäß den Nutzungsbedingungen der Rechteinhaber.",

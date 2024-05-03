@@ -8,6 +8,47 @@ export interface IPokemonGenerationProps {
   };
 }
 
+export interface IPokemonDetailProps {
+  id: number,
+  results: IPokemon;
+  colors: {
+    section: string;
+    card: string;
+    textColor: string;
+  };
+}
+
+export interface IPokemonYoutubeProps {
+  videoId: string;
+  status: number;
+  snippet: {
+    publishedAt: string;
+    channelId: string;
+    title: string;
+    description: string;
+    thumbnails: {
+      default: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      medium: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      high: {
+        url: string;
+        width: number;
+        height: number;
+      };
+    };
+    channelTitle: string;
+    liveBroadcastContent: string;
+    publishTime: string;
+  };
+}
+
 export interface IPokemonType {
   en: string;
   de: string;
@@ -32,8 +73,8 @@ export interface IPokemon {
   readonly id: number;
   readonly name: string;
   readonly names: IPokemonName;
-  readonly generationId: number;
-  readonly captureRate: number;
+  readonly generation_id: number;
+  readonly capture_rate: number;
   readonly color: IPokemonColor;
   readonly height: number;
   readonly weight: number;
@@ -84,3 +125,15 @@ export const pokemonTypesColors: Record<string, { bgColor: string, textColor: st
   unknown: { bgColor: 'bg-gray-300', textColor: 'text-gray-900' },
   shadow: { bgColor: 'bg-gray-900', textColor: 'text-white' },
 };
+
+export function padIdWithZeros(id: number) {
+  return String(id).padStart(4, '0');
+}
+
+export function dmToM(dm: number) {
+  return (dm / 10) + ' m';
+}
+
+export function hgToKg(hg: number) {
+  return (hg / 10) + ' kg';
+}

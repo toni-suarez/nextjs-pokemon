@@ -6,7 +6,7 @@ import { i18n } from '@/app/i18n';
 import { motion, useInView } from "framer-motion"
 
 const fetchPokemonData = async (generationNumber: number): Promise<IPokemonGenerationProps> => {
-  const response = await fetch(`/api/pokemon/${generationNumber}`, { next: { revalidate: 3600 } });
+  const response = await fetch(`/api/pokemon/generation/${generationNumber}`, { next: { revalidate: 3600 } });
   const data = await response.json();
 
   return {

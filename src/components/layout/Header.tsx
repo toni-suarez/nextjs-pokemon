@@ -9,16 +9,16 @@ import { useLanguage } from '@/app/LanguageContext';
 import { i18n } from '@/app/i18n';
 
 let navigation = [
-  { name: 'start', href: '#start' },
-  { name: '1', href: '#1' },
-  { name: '2', href: '#2' },
-  { name: '3', href: '#3' },
-  { name: '4', href: '#4' },
-  { name: '5', href: '#5' },
-  { name: '6', href: '#6' },
-  { name: '7', href: '#7' },
-  { name: '8', href: '#8' },
-  { name: '9', href: '#9' },
+  { name: 'start', href: '/#start' },
+  { name: '1', href: '/#1' },
+  { name: '2', href: '/#2' },
+  { name: '3', href: '/#3' },
+  { name: '4', href: '/#4' },
+  { name: '5', href: '/#5' },
+  { name: '6', href: '/#6' },
+  { name: '7', href: '/#7' },
+  { name: '8', href: '/#8' },
+  { name: '9', href: '/#9' },
 ]
 
 function classNames(...classes: any[]) {
@@ -64,7 +64,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`transition sticky top-0 z-10 ${textColor} ${bgColor}`}>
+    <header className={`transition sticky top-0 z-80 ${textColor} ${bgColor}`}>
       <Disclosure as="nav">
         {({ open }) => (
           <>
@@ -89,7 +89,7 @@ export default function Header() {
                       : `flex opacity-1`,
                     'transition flex-shrink-0 items-center font-bold'
                   )}>
-                    <Link href="#start">
+                    <Link href="/#start">
                       <Image src="/images/pokemon_logo.png" width={100} height={60} alt="" />
                     </Link>
                   </div>
