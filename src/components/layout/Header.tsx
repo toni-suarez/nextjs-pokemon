@@ -36,18 +36,8 @@ export default function Header() {
   navigation[0].name = i18n[language].header_start_button;
 
   useEffect(() => {
-    const handleScroll = async () => {
-      const sections = await new Promise<HTMLElement[]>(resolve => {
-        const observer = new MutationObserver(mutationsList => {
-          const sections = document.querySelectorAll<HTMLElement>('section');
-          if (sections.length > 0) {
-            observer.disconnect();
-            resolve(Array.from(sections));
-          }
-        });
-        observer.observe(document.body, { childList: true, subtree: true });
-      });
-
+    const handleScroll = () => {
+      const sections = document.querySelectorAll<HTMLElement>('section');
       sections.forEach(section => {
         const sectionTop = section.offsetTop - 64;
         const sectionBottom = sectionTop + section.clientHeight;
@@ -65,12 +55,23 @@ export default function Header() {
       });
     };
 
+    const observer = new MutationObserver(mutationsList => {
+      mutationsList.forEach(mutation => {
+        if (mutation.type === 'childList') {
+          handleScroll();
+        }
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
     handleScroll();
+
     window.addEventListener('scroll', handleScroll);
 
-    // Clean up
+    // Cleanup: remove event listener and disconnect observer
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
     };
   }, []);
 

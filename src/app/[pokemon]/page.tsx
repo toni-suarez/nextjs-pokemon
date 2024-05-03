@@ -77,7 +77,7 @@ export default function Home({ params }: { params: { pokemon: string } }) {
             </motion.div>
           </div>
           <div className='w-full lg:w-1/2'>
-            <h1 className="text-7xl font-bold uppercase mb-10">{pokemonData.results.names[language]}</h1>
+            <h1 className="text-4xl mb-5 font-bold uppercase lg:text-7xl lg:mb-10">{pokemonData.results.names[language]}</h1>
             <div className="text-base font-normal flex flex-row space-x-3">
               {pokemonData.results.type.map((type: IPokemonType, index: number) => (
                 <span
