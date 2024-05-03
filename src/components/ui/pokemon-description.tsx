@@ -15,11 +15,11 @@ export const PokemonDescription = ({
 }: {
   className?: string;
   children?: React.ReactNode;
-  generation: string;
+  generation: number;
   pokeid: string;
   name: string;
-  weight: string;
-  size: string;
+  weight: number;
+  size: number;
   abilitiy: string;
   color: string;
   language: Language
