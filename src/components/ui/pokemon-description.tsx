@@ -28,9 +28,9 @@ export const PokemonDescription = ({
   let text = i18n[language].description;
   text = text.replace('{name}', name);
   text = text.replace('{pokeid}', pokeid);
-  text = text.replace('{generation}', generation);
-  text = text.replace('{size}', size);
-  text = text.replace('{weight}', weight);
+  text = text.replace('{generation}', generation.toString());
+  text = text.replace('{size}', size.toString());
+  text = text.replace('{weight}', weight.toString());
   text = text.replace('{abilitiy}', abilitiy);
   text = text.replace('{color}', color);
 
