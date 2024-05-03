@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { padIdWithZeros, dmToM, hgToKg } from '@/api/pokedex';
 import Link from 'next/link';
 import { i18n } from '@/app/i18n';
+import { PokemonDescription } from '@/components/ui/pokemon-description';
 
 const fetchPokemonData = async (pokemon: string): Promise<IPokemonDetailProps> => {
   const response = await fetch(`/api/pokemon/detail/${pokemon}`, { next: { revalidate: 3600 } });
@@ -46,6 +47,7 @@ export default function Home({ params }: { params: { pokemon: string } }) {
 
   const bgColor = pokemonTypesColors[pokemonData.results.type[0]['en']].bgColor;
   const textColor = pokemonTypesColors[pokemonData.results.type[0]['en']].textColor;
+  const cardColor = pokemonData.colors.card;
 
   return (
     <main className={`${textColor} ${bgColor}`}>
@@ -62,7 +64,7 @@ export default function Home({ params }: { params: { pokemon: string } }) {
         data-current-nav-color={`bg-red-500`}
         data-text-color={`text-white`}
         id="detail"
-        className={`flex flex-col py-32 items-center justify-center px-5 lg:px-0 z-0`}>
+        className={`flex flex-col py-16 pb-24 items-center justify-center px-5 lg:px-0 z-0`}>
         <div className='w-full px-4 md:px-0 max-w-7xl mx-auto flex flex-col justify-center items-center lg:flex-row'>
           <div className='w-full lg:w-1/2 text-center'>
             <motion.div
@@ -90,23 +92,17 @@ export default function Home({ params }: { params: { pokemon: string } }) {
                 </span>
               ))}
             </div>
-            <div className='w-2/3 my-10 grid grid-cols-1 grid-rows-4 gap-2'>
-              <div className='flex space-x-1'>
-                <span className='capitalize'>{i18n[language].number}:</span>
-                <span>#{padIdWithZeros(pokemonData.results.id)}</span>
-              </div>
-              <div className='flex space-x-1'>
-                <span className='capitalize'>{i18n[language].generation}:</span>
-                <span>{pokemonData.results.generation_id} {i18n[language].generation}</span>
-              </div>
-              <div className='flex space-x-1'>
-                <span className='capitalize'>{i18n[language].size}:</span>
-                <span>{dmToM(pokemonData.results.height)}</span>
-              </div>
-              <div className='flex space-x-1'>
-                <span className='capitalize'>{i18n[language].weight}:</span>
-                <span>{hgToKg(pokemonData.results.weight)}</span>
-              </div>
+
+            <div className={`w-full lg:w-2/3 my-10 text-base p-3 text-left rounded-lg bg-white/60 text-black`}>
+              <PokemonDescription
+                name={pokemonData.results.names[language]}
+                pokeid={padIdWithZeros(pokemonData.results.id)}
+                generation={pokemonData.results.generation_id}
+                size={pokemonData.results.height}
+                weight={pokemonData.results.weight}
+                color={pokemonData.results.color[language]}
+                abilitiy={pokemonData.results.abilities[language]}
+                language={language}></PokemonDescription>
             </div>
           </div>
         </div>
