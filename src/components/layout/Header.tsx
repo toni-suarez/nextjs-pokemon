@@ -36,34 +36,41 @@ export default function Header() {
   navigation[0].name = i18n[language].header_start_button;
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section');
-      if (sections.length > 0) {
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop - 64;
-          const sectionBottom = sectionTop + section.clientHeight;
-          const scrollPosition = window.scrollY || window.pageYOffset;
-          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            const color = section.getAttribute('data-bg-color');
-            const currentMenuColor = section.getAttribute('data-current-nav-color');
-            const textColor = section.getAttribute('data-text-color');
-            const id = section.id;
-            setBgColor(color || 'bg-transparent');
-            setCurrentMenuItem(id);
-            setCurrentBgColor(currentMenuColor || 'text-black');
-            setTextColor(textColor || 'text-white');
+    const handleScroll = async () => {
+      const sections = await new Promise<HTMLElement[]>(resolve => {
+        const observer = new MutationObserver(mutationsList => {
+          const sections = document.querySelectorAll<HTMLElement>('section');
+          if (sections.length > 0) {
+            observer.disconnect();
+            resolve(Array.from(sections));
           }
         });
-      }
+        observer.observe(document.body, { childList: true, subtree: true });
+      });
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 64;
+        const sectionBottom = sectionTop + section.clientHeight;
+        const scrollPosition = window.scrollY || window.pageYOffset;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          const color = section.getAttribute('data-bg-color');
+          const currentMenuColor = section.getAttribute('data-current-nav-color');
+          const textColor = section.getAttribute('data-text-color');
+          const id = section.id;
+          setBgColor(color || 'bg-transparent');
+          setCurrentMenuItem(id);
+          setCurrentBgColor(currentMenuColor || 'text-black');
+          setTextColor(textColor || 'text-white');
+        }
+      });
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
-    document.addEventListener('DOMContentLoaded', handleScroll);
 
     // Clean up
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('DOMContentLoaded', handleScroll);
     };
   }, []);
 

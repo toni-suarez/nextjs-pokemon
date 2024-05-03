@@ -37,7 +37,9 @@ export const PokemonVideo = ({
 
   if (!pokemonVideo) {
     return (
-      <p>Kein Video für {pokemon} gefunden.</p>
+      <div className='max-w-5xl w-full h-auto aspect-video bg-gray-300 rounded flex justify-center items-center'>
+        <p className='text-xl text-black'>Kein Video für {pokemon} gefunden.</p>
+      </div>
     );
   }
 

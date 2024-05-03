@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../LanguageContext';
 import { PokemonVideo } from '@/components/ui/pokemon-video';
 import { getColorsForGeneration, IPokemonDetailProps, pokemonTypesColors, IPokemonType } from '@/api/pokedex';
@@ -8,7 +8,6 @@ import Image from 'next/image';
 import { padIdWithZeros, dmToM, hgToKg } from '@/api/pokedex';
 import Link from 'next/link';
 import { i18n } from '@/app/i18n';
-
 
 const fetchPokemonData = async (pokemon: string): Promise<IPokemonDetailProps> => {
   const response = await fetch(`/api/pokemon/detail/${pokemon}`, { next: { revalidate: 3600 } });
@@ -37,13 +36,16 @@ export default function Home({ params }: { params: { pokemon: string } }) {
 
   if (!pokemonData) {
     return (
-      <p>Lädt....</p>
+      <main>
+        <section className='h-[96vh] bg-amber-500 w-full flex items-center justify-center'>
+          <p>Lädt...</p>
+        </section>
+      </main>
     );
   }
 
   const bgColor = pokemonTypesColors[pokemonData.results.type[0]['en']].bgColor;
   const textColor = pokemonTypesColors[pokemonData.results.type[0]['en']].textColor;
-  const cardColor = pokemonData.colors.card;
 
   return (
     <main className={`${textColor} ${bgColor}`}>
@@ -57,7 +59,7 @@ export default function Home({ params }: { params: { pokemon: string } }) {
         data-current-nav-color={`bg-red-500`}
         data-text-color={`text-white`}
         id="detail"
-        className={`anchor flex flex-col py-32 items-center justify-center px-4 md:px-0 z-0`}>
+        className={`flex flex-col py-32 items-center justify-center px-4 md:px-0 z-0`}>
         <div className='w-full px-4 md:px-0 max-w-7xl mx-auto flex flex-col justify-center items-center lg:flex-row'>
           <div className='w-full lg:w-1/2 text-center'>
             <motion.div
