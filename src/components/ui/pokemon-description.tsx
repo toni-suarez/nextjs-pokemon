@@ -1,4 +1,4 @@
-import { Language } from "@/app/LanguageContext";
+import { Language } from "@/i18n";
 import { i18n } from "@/app/i18n";
 
 export const PokemonDescription = ({

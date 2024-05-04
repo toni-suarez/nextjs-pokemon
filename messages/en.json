@@ -1,0 +1,30 @@
+{
+  "Header": {
+    "header_start_button": "start"
+  },
+  "Hero": {
+    "hero_cta_button": "Discover now!"
+  },
+  "Pokemon": {
+    "generation": "generation",
+    "since_generation": "since",
+    "size": "height",
+    "weight": "weight",
+    "number": "number",
+    "abilities": "ability",
+    "color": "color",
+    "back": "back",
+    "video_source": "Source",
+    "channel": "Channel",
+    "description": "The Pokémon {name} with number <strong>#{pokeid}</strong> was discovered since the <strong>{generation} generation</strong>. It has a height of <strong>{size}</strong> and a weight of <strong>{weight}</strong>. Its ability is <strong>{ability}</strong> and its color is <strong>{color}</strong>."
+  },
+  "Footer": {
+    "disclaimer": {
+      "trademark": "All Pokémon-related content are registered trademarks of Nintendo, Game Freak, and/or The Pokémon Company.",
+      "usage": "The use of Pokémon content on this website is only for non-commercial purposes or according to the terms of the rights holders.",
+      "not_official": "This website is not an official Pokémon website and is not affiliated with Nintendo, Game Freak, or The Pokémon Company.",
+      "fair_use": "The use of Pokémon content on this website is subject to the principles of Fair Use for critical discussion and analysis.",
+      "disclaimer_info": "Disclaimer: The information on this website is for informational purposes only and is provided without warranty."
+    }
+  }
+}

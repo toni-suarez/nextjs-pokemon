@@ -1,16 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useInView } from "framer-motion"
-import { IPokemonYoutubeProps } from '@/api/pokedex';
-import { Language } from '@/app/LanguageContext';
+import { Language } from "@/i18n";
 import { i18n } from '@/app/i18n';
 
-const fetchPokemonVideo = async (pokemon: string): Promise<IPokemonYoutubeProps> => {
-  const response = await fetch(`/api/youtube/${pokemon}`, { next: { revalidate: 3600 } });
+async function fetchPokemonVideo(pokemon: string) {
+  const response = await fetch(`${process.env.API_URL}/api/youtube/${pokemon}`);
   const data = await response.json();
   return data;
 };
 
-export const PokemonVideo = ({
+export async function PokemonVideo({
   className,
   children,
   language,
@@ -20,20 +17,8 @@ export const PokemonVideo = ({
   children?: React.ReactNode;
   language: Language;
   pokemon: string;
-}) => {
-  const [pokemonVideo, setPokemonVideo] = useState<IPokemonYoutubeProps>();
-  const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "0px 0px 5000px 0px" })
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchPokemonVideo(pokemon);
-      setPokemonVideo(data);
-    };
-
-    fetchData();
-  }, [pokemon]);
-
+}) {
+  const pokemonVideo = await fetchPokemonVideo(pokemon);
 
   if (!pokemonVideo) {
     return (
