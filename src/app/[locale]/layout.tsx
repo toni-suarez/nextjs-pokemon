@@ -2,7 +2,6 @@ import { Inter } from "next/font/google";
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { NextIntlClientProvider, useTranslations, useMessages } from 'next-intl';
-import Transition from "@/components/layout/Transition";
 
 const inter = Inter({ subsets: ["latin"] });
 
