@@ -35,8 +35,7 @@ export default function Index({ params: { locale } }: { params: { locale: Langua
           className="text-2xl lg:text:3xl xl:text-5xl my-10 mb-24 text-white"
           duration={.75}
           delay={2}
-          language={locale}
-          words={HeroWords} />
+          words={t('hero_claim')} />
 
         <a href="#1" className="px-5 py-3 text-lg transition font-bold border-2 border-blue-700 capitalize rounded-full w-fit bg-blue-700 text-white hover:bg-yellow-400 hover:text-blue-700">
           {t('hero_cta_button')}

@@ -2,52 +2,30 @@
 
 import { cn } from "@/utils/cn";
 import { motion } from "framer-motion";
-import { Language } from "@/i18n";
 
 export const TypewriterEffect = ({
   words,
-  language,
   duration,
   delay,
   className,
   cursorClassName,
 }: {
-  words: {
-    en: {
-      text: string;
-      className?: string;
-    }[];
-    de: {
-      text: string;
-      className?: string;
-    }[];
-  };
-  language: Language;
+  words: string;
   className?: string;
   duration?: number;
-  delay?: number,
+  delay?: number;
   cursorClassName?: string;
 }) => {
-  // split text inside of words into array of characters
-  const wordsArray = words[language].map((word) => {
-    return {
-      ...word,
-      text: word.text.split(""),
-    };
-  });
+  // split text into array of words
+  const wordsArray = words.split(" ");
   const renderWords = () => {
     return (
       <div>
         {wordsArray.map((word, idx) => {
           return (
             <div key={`word-${idx}`} className="inline-block">
-              {word.text.map((char, index) => (
-                <span
-                  key={`char-${index}`}
-                  className={cn(` `, word.className)}
-                >
-                  {char}
-                </span>
+              {word.split("").map((char, index) => (
+                <span key={`char-${index}`}>{char}</span>
               ))}
               &nbsp;
             </div>
@@ -79,7 +57,7 @@ export const TypewriterEffect = ({
             whiteSpace: "nowrap",
           }}
         >
-          {renderWords()}{" "}
+          {renderWords()}
         </div>{" "}
       </motion.div>
       <motion.span

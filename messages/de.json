@@ -3,7 +3,8 @@
     "header_start_button": "Start"
   },
   "Hero": {
-    "hero_cta_button": "Jetzt entdecken!"
+    "hero_cta_button": "Jetzt entdecken!",
+    "hero_claim": "Das Abenteuer beginnt mit Dir!"
   },
   "Pokemon": {
     "generation": "Generation",
