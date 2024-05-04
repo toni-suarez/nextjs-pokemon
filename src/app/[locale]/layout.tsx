@@ -23,7 +23,7 @@ export default function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <Header locale={locale} />
         </NextIntlClientProvider>
-        <Transition>{children}</Transition>
+        {children}
         <Footer />
       </body>
     </html>

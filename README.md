@@ -1,8 +1,10 @@
 # Pokémon Overview
 
+![Vercel Deploy](https://deploy-badge.vercel.app/vercel/nextjs-pokemon-overview)
+
 This project is a Pokémon overview web application built with Next.js. It provides a simple overview all Pokémon from the first nine generations.
 
-[Visit the project](https://nextjs-pokemon-five-gamma.vercel.app/)
+[Visit the project](https://nextjs-pokemon-overview.vercel.app/)
 
 ## Getting Started
 
