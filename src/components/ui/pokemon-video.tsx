@@ -1,5 +1,5 @@
 import { Language } from "@/i18n";
-import { i18n } from '@/app/i18n';
+import { getTranslations } from "next-intl/server";
 
 async function fetchPokemonVideo(pokemon: string) {
   const response = await fetch(`${process.env.API_URL}/api/youtube/${pokemon}`);
@@ -10,20 +10,19 @@ async function fetchPokemonVideo(pokemon: string) {
 export async function PokemonVideo({
   className,
   children,
-  language,
   pokemon,
 }: {
   className?: string;
   children?: React.ReactNode;
-  language: Language;
   pokemon: string;
 }) {
   const pokemonVideo = await fetchPokemonVideo(pokemon);
+  const t = await getTranslations('Pokemon');
 
   if (!pokemonVideo) {
     return (
       <div className='max-w-5xl w-full h-auto aspect-video bg-gray-300 rounded flex justify-center items-center'>
-        <p className='text-xl text-black'>Kein Video für {pokemon} gefunden.</p>
+        <p className='text-xl text-black'>{t('no_match', { name: pokemon })}</p>
       </div>
     );
   }
@@ -42,7 +41,7 @@ export async function PokemonVideo({
 
       <div className='flex flex-col mt-3 text-right text-xs text-gray-800'>
         <span>
-          {`${i18n[language].video_source}: Youtube; "${pokemonVideo.snippet.title}" (${i18n[language].channel}: "${pokemonVideo.snippet.channelTitle}")`}
+          {`${t('video_source')}: Youtube; "${pokemonVideo.snippet.title}" (${t('channel')}: "${pokemonVideo.snippet.channelTitle}")`}
         </span>
       </div>
     </div>

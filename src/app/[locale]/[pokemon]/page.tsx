@@ -1,6 +1,5 @@
 import { PokemonVideo } from '@/components/ui/pokemon-video';
 import { getColorsForGeneration, IPokemonDetailProps, pokemonTypesColors, IPokemonType } from '@/api/pokedex';
-import { useInView, motion } from 'framer-motion';
 import Image from 'next/image';
 import { padIdWithZeros, dmToM, hgToKg } from '@/api/pokedex';
 import Link from 'next/link';
@@ -61,11 +60,6 @@ export default async function Home({
         className={`flex flex-col py-16 pb-24 items-center justify-center px-5 lg:px-0 z-0`}>
         <div className='w-full px-4 md:px-0 max-w-7xl mx-auto flex flex-col justify-center items-center lg:flex-row'>
           <div className='w-full lg:w-1/2 text-center'>
-            {/* <motion.div
-              className='origin-center'
-              transition={{ duration: 10, delay: .3, ease: 'easeInOut' }}
-              initial={{ rotate: 2, scale: 0.9 }}
-              animate={{ rotate: 0, scale: 1 }}> */}
             <Image
               priority={true}
               className="aspect-square w-[500px] object-fit mx-auto"
@@ -73,7 +67,6 @@ export default async function Home({
               width={300}
               height={300}
               alt={pokemonData.results.names[locale]} />
-            {/* </motion.div> */}
           </div>
           <div className='w-full lg:w-1/2 text-center lg:text-left'>
             <h1 className="text-4xl mb-5 font-bold uppercase lg:text-7xl lg:mb-10">{pokemonData.results.names[locale]}</h1>
@@ -95,8 +88,7 @@ export default async function Home({
                 size={dmToM(pokemonData.results.height)}
                 weight={hgToKg(pokemonData.results.weight)}
                 color={pokemonData.results.color[locale]}
-                abilitiy={pokemonData.results.abilities[locale]}
-                language={locale}></PokemonDescription>
+                ability={pokemonData.results.abilities[locale]}></PokemonDescription>
             </div>
           </div>
         </div>
@@ -107,9 +99,7 @@ export default async function Home({
         data-text-color={`text-white`}
         id="video"
         className={`anchor flex flex-col pb-64 items-center justify-center px-4 md:px-0 z-0`}>
-        <PokemonVideo
-          pokemon={pokemonData.results.names[locale]}
-          language={locale}></PokemonVideo>
+        <PokemonVideo pokemon={pokemonData.results.names[locale]}></PokemonVideo>
       </section>
     </main >
   );

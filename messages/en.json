@@ -16,6 +16,7 @@
     "back": "back",
     "video_source": "Source",
     "channel": "Channel",
+    "no_match": "No video found for {pokemon}.",
     "description": "The Pokémon {name} with number <strong>#{pokeid}</strong> was discovered since the <strong>{generation} generation</strong>. It has a height of <strong>{size}</strong> and a weight of <strong>{weight}</strong>. Its ability is <strong>{ability}</strong> and its color is <strong>{color}</strong>."
   },
   "Footer": {

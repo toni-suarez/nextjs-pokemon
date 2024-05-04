@@ -1,5 +1,5 @@
 import { Language } from "@/i18n";
-import { i18n } from "@/app/i18n";
+import { useTranslations } from "next-intl";
 
 export const PokemonDescription = ({
   className,
@@ -9,9 +9,8 @@ export const PokemonDescription = ({
   name,
   weight,
   size,
-  abilitiy,
+  ability,
   color,
-  language,
 }: {
   className?: string;
   children?: React.ReactNode;
@@ -20,21 +19,23 @@ export const PokemonDescription = ({
   name: string;
   weight: string;
   size: string;
-  abilitiy: string;
+  ability: string;
   color: string;
-  language: Language
 }) => {
-
-  let text = i18n[language].description;
-  text = text.replace('{name}', name);
-  text = text.replace('{pokeid}', pokeid);
-  text = text.replace('{generation}', generation.toString());
-  text = text.replace('{size}', size);
-  text = text.replace('{weight}', weight);
-  text = text.replace('{abilitiy}', abilitiy);
-  text = text.replace('{color}', color);
+  const t = useTranslations('Pokemon');
 
   return (
-    <div dangerouslySetInnerHTML={{ __html: text }}></div>
+    <div dangerouslySetInnerHTML={{
+      __html: t.markup('description', {
+        strong: (chunks) => `<strong>${chunks}</strong>`,
+        name: name,
+        pokeid: pokeid,
+        generation: generation.toString(),
+        size: size,
+        weight: weight,
+        ability: ability,
+        color: color
+      })
+    }}></div >
   );
 }

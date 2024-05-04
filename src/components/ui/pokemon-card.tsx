@@ -4,22 +4,26 @@ import React, { useState } from 'react';
 import { cn } from "@/utils/cn";
 import Image from 'next/image'
 import { IPokemon, IPokemonType, pokemonTypesColors } from "@/api/pokedex";
-import { i18n } from '@/app/i18n';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { padIdWithZeros, dmToM, hgToKg } from '@/api/pokedex';
 import { Language } from "@/i18n";
+import { getTranslations } from 'next-intl/server';
 
 export const PokemonCard = ({
   className,
   id,
   pokemon,
-  language
+  language,
+  sizeTranslation,
+  weightTranslation,
 }: {
   className?: string;
   id?: number;
   pokemon: IPokemon;
   language: Language;
+  sizeTranslation: string;
+  weightTranslation: string;
 }) => {
 
   const [audioLoaded, setAudioLoaded] = useState(false);
@@ -77,11 +81,11 @@ export const PokemonCard = ({
 
       <div className="text-[.65rem] font-sans absolute bottom-2 left-3">
         <div className='flex space-x-1'>
-          <span className='capitalize'>{i18n[language].size}:</span>
+          <span className='capitalize'>{sizeTranslation}:</span>
           <span>{dmToM(pokemon.height)}</span>
         </div>
         <div className='flex space-x-1'>
-          <span className='capitalize'>{i18n[language].weight}:</span>
+          <span className='capitalize'>{weightTranslation}:</span>
           <span>{hgToKg(pokemon.weight)}</span>
         </div>
       </div>
