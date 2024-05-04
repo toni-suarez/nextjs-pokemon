@@ -1,0 +1,30 @@
+{
+  "Header": {
+    "header_start_button": "Start"
+  },
+  "Hero": {
+    "hero_cta_button": "Jetzt entdecken!"
+  },
+  "Pokemon": {
+    "generation": "Generation",
+    "since_generation": "seit",
+    "size": "Größe",
+    "weight": "Gewicht",
+    "number": "Nummer",
+    "abilities": "Fähigkeit",
+    "color": "Farbe",
+    "back": "Zurück",
+    "video_source": "Quelle",
+    "channel": "Kanal",
+    "description": "Das Pokémon {name} mit der Nummer <strong>#{pokeid}</strong> wurde seit der <strong>{generation}. Generation</strong> entdeckt. Es hat eine Größe von <strong>{size}</strong> und ein Gewicht von <strong>{weight}</strong>. Seine Fähigkeit ist <strong>{ability}</strong> und seine Farbe ist <strong>{color}</strong>."
+  },
+  "Footer": {
+    "disclaimer": {
+      "trademark": "Alle Pokémon-bezogenen Inhalte sind eingetragene Marken von Nintendo, Game Freak und/oder The Pokémon Company.",
+      "usage": "Die Verwendung von Pokémon-Inhalten auf dieser Webseite erfolgt nur zu nicht-kommerziellen Zwecken oder gemäß den Nutzungsbedingungen der Rechteinhaber.",
+      "not_official": "Diese Webseite ist keine offizielle Pokémon-Website und steht in keiner Verbindung zu Nintendo, Game Freak oder The Pokémon Company.",
+      "fair_use": "Die Verwendung von Pokémon-Inhalten auf dieser Webseite erfolgt unter den Grundsätzen des Fair Use für kritische Diskussion und Analyse.",
+      "disclaimer_info": "Haftungsausschluss: Die Informationen auf dieser Webseite dienen nur zu Informationszwecken und sind ohne Gewähr."
+    }
+  }
+}

@@ -1,37 +1,25 @@
+"use client"
+
 import React, { useState } from 'react';
 import { cn } from "@/utils/cn";
 import Image from 'next/image'
 import { IPokemon, IPokemonType, pokemonTypesColors } from "@/api/pokedex";
-import { Language } from "@/app/LanguageContext";
 import { i18n } from '@/app/i18n';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { padIdWithZeros, dmToM, hgToKg } from '@/api/pokedex';
-
-export const PokemonGrid = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children?: React.ReactNode;
-}) => {
-  return (
-    <div className={cn("grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-4 md:px-0 max-w-7xl mx-auto", className)}>
-      {children}
-    </div>
-  );
-};
+import { Language } from "@/i18n";
 
 export const PokemonCard = ({
   className,
   id,
-  language,
-  pokemon
+  pokemon,
+  language
 }: {
   className?: string;
   id?: number;
-  language: Language;
   pokemon: IPokemon;
+  language: Language;
 }) => {
 
   const [audioLoaded, setAudioLoaded] = useState(false);
@@ -75,7 +63,7 @@ export const PokemonCard = ({
       </div>
 
       <Link
-        href={`/${pokemon.names[language]}`}
+        href={`/${language}/${pokemon.names[language]}`}
         className="transition aspect-square pt-5 group-hover:lg:scale-110">
         <Image
           className="aspect-square w-48 object-fit"

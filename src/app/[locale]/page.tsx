@@ -2,8 +2,11 @@ import Image from 'next/image';
 import { HeroWords } from '@/api/HeroWords';
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { PokemonGeneration } from '@/components/ui/pokemon-generation';
+import { useTranslations } from 'next-intl';
+import { Language } from '@/i18n';
 
-export default function Home() {
+export default function Index({ params }: { props: { locale: Language } }) {
+  const t = useTranslations('Hero');
   return (
     <main>
       <section
@@ -32,10 +35,11 @@ export default function Home() {
           className="text-2xl lg:text:3xl xl:text-5xl my-10 mb-24 text-white"
           duration={.75}
           delay={2}
+          language={params.locale}
           words={HeroWords} />
 
         <a href="#1" className="px-5 py-3 text-lg transition font-bold border-2 border-blue-700 capitalize rounded-full w-fit bg-blue-700 text-white hover:bg-yellow-400 hover:text-blue-700">
-          {/* {i18n[language].hero_cta_button} */}
+          {t('hero_cta_button')}
         </a>
       </section>
 
@@ -43,9 +47,8 @@ export default function Home() {
         <PokemonGeneration
           key={index + 1}
           generation={index + 1}
-          language='de' />
+          language={params.locale} />
       ))}
-
     </main >
   );
 }

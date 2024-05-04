@@ -2,25 +2,34 @@
 
 import { cn } from "@/utils/cn";
 import { motion } from "framer-motion";
+import { Language } from "@/i18n";
 
 export const TypewriterEffect = ({
   words,
+  language,
   duration,
   delay,
   className,
   cursorClassName,
 }: {
   words: {
-    text: string;
-    className?: string;
-  }[];
+    en: {
+      text: string;
+      className?: string;
+    }[];
+    de: {
+      text: string;
+      className?: string;
+    }[];
+  };
+  language: Language;
   className?: string;
   duration?: number;
   delay?: number,
   cursorClassName?: string;
 }) => {
   // split text inside of words into array of characters
-  const wordsArray = words.map((word) => {
+  const wordsArray = words[language].map((word) => {
     return {
       ...word,
       text: word.text.split(""),
