@@ -5,7 +5,7 @@ import { PokemonGeneration } from '@/components/ui/pokemon-generation';
 import { useTranslations } from 'next-intl';
 import { Language } from '@/i18n';
 
-export default function Index({ params }: { props: { locale: Language } }) {
+export default function Index({ params: { locale } }: { params: { locale: Language } }) {
   const t = useTranslations('Hero');
   return (
     <main>
@@ -35,7 +35,7 @@ export default function Index({ params }: { props: { locale: Language } }) {
           className="text-2xl lg:text:3xl xl:text-5xl my-10 mb-24 text-white"
           duration={.75}
           delay={2}
-          language={params.locale}
+          language={locale}
           words={HeroWords} />
 
         <a href="#1" className="px-5 py-3 text-lg transition font-bold border-2 border-blue-700 capitalize rounded-full w-fit bg-blue-700 text-white hover:bg-yellow-400 hover:text-blue-700">
@@ -47,7 +47,7 @@ export default function Index({ params }: { props: { locale: Language } }) {
         <PokemonGeneration
           key={index + 1}
           generation={index + 1}
-          language={params.locale} />
+          language={locale} />
       ))}
     </main >
   );
