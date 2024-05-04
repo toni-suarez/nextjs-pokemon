@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { HeroWords } from '@/api/HeroWords';
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { PokemonGeneration } from '@/components/ui/pokemon-generation';
 import { useTranslations } from 'next-intl';
@@ -16,11 +15,6 @@ export default function Index({ params: { locale } }: { params: { locale: Langua
         id="start"
         className="relative anchor flex flex-col items-center justify-center bg-red-500 text-white px-4 md:px-0 py-28 lg:py-40">
 
-        {/* <motion.div
-          className='origin-center'
-          transition={{ duration: 3, delay: 1, ease: 'easeInOut' }}
-          initial={{ rotate: 2, scale: 0.65 }}
-          animate={{ rotate: 0, scale: 1 }}> */}
         <h1 className="text-3xl md:text-8xl tracking-tight font-bold text-white	text-center">
           <Image
             src="/images/pokemon_logo.png"
@@ -29,7 +23,6 @@ export default function Index({ params: { locale } }: { params: { locale: Langua
             height={300}
             alt="Pokemon Logo" />
         </h1>
-        {/* </motion.div> */}
 
         <TypewriterEffect
           className="text-2xl lg:text:3xl xl:text-5xl my-10 mb-24 text-white"
