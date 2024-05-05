@@ -3,6 +3,8 @@ import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { PokemonGeneration } from '@/components/ui/pokemon-generation';
 import { useTranslations } from 'next-intl';
 import { Language } from '@/i18n';
+import { Suspense } from 'react';
+import Skeleton from '@/components/layout/Skeleton';
 
 export default function Index({ params: { locale } }: { params: { locale: Language } }) {
   const t = useTranslations('Hero');
@@ -36,10 +38,12 @@ export default function Index({ params: { locale } }: { params: { locale: Langua
       </section>
 
       {[...Array(9)].map((_, index) => (
-        <PokemonGeneration
-          key={index + 1}
-          generation={index + 1}
-          language={locale} />
+        <Suspense key={index + 1} fallback={<Skeleton />}>
+          <PokemonGeneration
+            key={index + 1}
+            generation={index + 1}
+            language={locale} />
+        </Suspense>
       ))}
     </main >
   );
