@@ -1,4 +1,3 @@
-import { Language } from "@/i18n";
 import { useTranslations } from "next-intl";
 
 export const PokemonDescription = ({

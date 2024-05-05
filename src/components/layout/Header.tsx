@@ -17,6 +17,7 @@ export default function Header({ locale }: { locale: string; }) {
   const [currentBgColor, setCurrentBgColor] = useState('bg-red-500');
   const [textColor, setTextColor] = useState('text-white');
   const [currentMenuItem, setCurrentMenuItem] = useState('start');
+
   const t = useTranslations('Header');
 
   let navigation = [
@@ -34,40 +35,51 @@ export default function Header({ locale }: { locale: string; }) {
     { name: '9', href: `/${locale}#9` },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll<HTMLElement>('section');
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 64;
-        const sectionBottom = sectionTop + section.clientHeight;
-        const scrollPosition = window.scrollY || window.pageYOffset;
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-          const color = section.getAttribute('data-bg-color');
-          const currentMenuColor = section.getAttribute('data-current-nav-color');
-          const textColor = section.getAttribute('data-text-color');
-          const id = section.id;
-          setBgColor(color || 'bg-transparent');
-          setCurrentMenuItem(id);
-          setCurrentBgColor(currentMenuColor || 'text-black');
-          setTextColor(textColor || 'text-white');
-        }
-      });
-    };
+  const updateSectionStyles = () => {
+    const sections = document.querySelectorAll<HTMLElement>('section');
+    const scrollPosition = window.scrollY || window.pageYOffset;
+    let foundActiveSection = false;
 
-    const observer = new MutationObserver(mutationsList => {
-      mutationsList.forEach(mutation => {
-        if (mutation.type === 'childList') {
-          handleScroll();
-        }
-      });
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 64;
+      const sectionBottom = sectionTop + section.clientHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        const color = section.getAttribute('data-bg-color') || 'bg-transparent';
+        const currentMenuColor = section.getAttribute('data-current-nav-color') || 'text-black';
+        const textColor = section.getAttribute('data-text-color') || 'text-white';
+        const id = section.id;
+
+        setBgColor(color);
+        setCurrentMenuItem(id);
+        setCurrentBgColor(currentMenuColor);
+        setTextColor(textColor);
+
+        foundActiveSection = true;
+      }
+    });
+
+    if (!foundActiveSection) {
+      setBgColor('bg-transparent');
+      setCurrentMenuItem('');
+      setCurrentBgColor('text-black');
+      setTextColor('text-white');
+    }
+  };
+
+  useEffect(() => {
+    updateSectionStyles();
+
+    const observer = new MutationObserver(() => {
+      updateSectionStyles();
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', updateSectionStyles);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', updateSectionStyles);
       observer.disconnect();
     };
   }, []);

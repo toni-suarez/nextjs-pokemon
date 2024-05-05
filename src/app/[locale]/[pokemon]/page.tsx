@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { PokemonDescription } from '@/components/ui/pokemon-description';
 import { getTranslations } from 'next-intl/server';
 import { Language } from '@/i18n';
+import { PokemonAudio } from '@/components/ui/pokemon-audio';
 
 async function fetchPokemonData(pokemon: string) {
   const response = await fetch(`${process.env.API_URL}/api/pokemon/detail/${pokemon}`);
@@ -38,7 +39,6 @@ export default async function Home({
 
   const bgColor = pokemonTypesColors[pokemonData.results.type[0]['en']].bgColor;
   const textColor = pokemonTypesColors[pokemonData.results.type[0]['en']].textColor;
-  const cardColor = pokemonData.colors.card;
 
   return (
     <main className={`${textColor} ${bgColor}`}>
@@ -67,9 +67,11 @@ export default async function Home({
               width={300}
               height={300}
               alt={pokemonData.results.names[locale]} />
+            <PokemonAudio pokemon={pokemonData.results} />
           </div>
           <div className='w-full lg:w-1/2 text-center lg:text-left'>
             <h1 className="text-4xl mb-5 font-bold uppercase lg:text-7xl lg:mb-10">{pokemonData.results.names[locale]}</h1>
+
             <div className="text-base font-normal flex flex-row space-x-3">
               {pokemonData.results.type.map((type: IPokemonType, index: number) => (
                 <span

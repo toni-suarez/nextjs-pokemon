@@ -1,4 +1,3 @@
-import { Language } from "@/i18n";
 import { getTranslations } from "next-intl/server";
 
 async function fetchPokemonVideo(pokemon: string) {
