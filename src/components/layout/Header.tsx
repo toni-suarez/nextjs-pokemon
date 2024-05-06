@@ -4,7 +4,7 @@ import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import LanguageSwitch from './LanguageSwitch';
 
 function classNames(...classes: any[]) {

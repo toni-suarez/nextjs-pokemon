@@ -1,8 +1,8 @@
 import { cn } from "@/utils/cn";
 import Image from 'next/image'
-import { IPokemon, IPokemonType, pokemonTypesColors } from "@/api/pokedex";
+import { IPokemon, IPokemonType, pokemonTypesColors } from "@/data/pokedex";
 import Link from 'next/link';
-import { padIdWithZeros, dmToM, hgToKg } from '@/api/pokedex';
+import { padIdWithZeros, dmToM, hgToKg } from '@/data/pokedex';
 import { Language } from "@/i18n";
 import { PokemonAudio } from './pokemon-audio';
 

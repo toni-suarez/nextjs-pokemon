@@ -1,5 +1,4 @@
 export default function PokemonGenerationSkeleton() {
-
   return (
     <section
       data-bg-color="bg-amber-400"

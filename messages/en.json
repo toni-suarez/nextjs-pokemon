@@ -20,6 +20,11 @@
     "no_match": "No video found for {pokemon}.",
     "description": "The Pokémon {name} with number <strong>#{pokeid}</strong> was discovered since the <strong>{generation} generation</strong>. It has a height of <strong>{size}</strong> and a weight of <strong>{weight}</strong>. Its ability is <strong>{ability}</strong> and its color is <strong>{color}</strong>."
   },
+  "NotFound": {
+    "title": "Not found",
+    "text": "The Pokémon could not be found",
+    "back": "Back home"
+  },
   "Footer": {
     "disclaimer": {
       "trademark": "All Pokémon-related content are registered trademarks of Nintendo, Game Freak, and/or The Pokémon Company.",

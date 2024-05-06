@@ -1,6 +1,6 @@
 import { PokemonCard } from "@/components/ui/pokemon-card";
 import { PokemonGrid } from './pokemon-grid';
-import { IPokemon, IPokemonGenerationProps, getColorsForGeneration } from '@/api/pokedex';
+import { IPokemon, IPokemonGenerationProps, getColorsForGeneration } from '@/data/pokedex';
 import { Language } from "@/i18n";
 import { getTranslations } from "next-intl/server";
 
@@ -55,6 +55,5 @@ export async function PokemonGeneration({
         ))}
       </PokemonGrid>
     </section>
-
   );
 }

@@ -1,8 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { NextResponse, NextRequest } from 'next/server'
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { IPokemon } from '@/api/pokedex';
+import { IPokemon } from '@/data/pokedex';
 
 
 export async function GET(request: NextRequest, context: { params: { generation: string } }) {
@@ -14,7 +13,7 @@ export async function GET(request: NextRequest, context: { params: { generation:
   }
 
   try {
-    const filePath = join(process.cwd(), 'src/api/pokemons', `generation-${generation}.json`);
+    const filePath = join(process.cwd(), 'src/data/pokemons', `generation-${generation}.json`);
     const jsonData = readFileSync(filePath, 'utf-8');
     const parsedData: IPokemon[] = JSON.parse(jsonData);
 

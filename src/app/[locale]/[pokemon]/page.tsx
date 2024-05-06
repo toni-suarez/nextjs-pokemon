@@ -1,16 +1,21 @@
 import { PokemonVideo } from '@/components/ui/pokemon-video';
-import { getColorsForGeneration, IPokemonDetailProps, pokemonTypesColors, IPokemonType } from '@/api/pokedex';
+import { getColorsForGeneration, IPokemonDetailProps, pokemonTypesColors, IPokemonType } from '@/data/pokedex';
 import Image from 'next/image';
-import { padIdWithZeros, dmToM, hgToKg } from '@/api/pokedex';
+import { padIdWithZeros, dmToM, hgToKg } from '@/data/pokedex';
 import Link from 'next/link';
 import { PokemonDescription } from '@/components/ui/pokemon-description';
 import { getTranslations } from 'next-intl/server';
 import { Language } from '@/i18n';
 import { PokemonAudio } from '@/components/ui/pokemon-audio';
+import { notFound } from 'next/navigation';
 
 async function fetchPokemonData(pokemon: string) {
   const response = await fetch(`${process.env.API_URL}/api/pokemon/detail/${pokemon}`);
   const data = await response.json();
+
+  if (!data.generation_id) {
+    return false;
+  }
 
   return {
     id: data.generation_id,
@@ -28,13 +33,7 @@ export default async function Home({
   const t = await getTranslations('Pokemon');
 
   if (!pokemonData) {
-    return (
-      <main>
-        <section className='h-[96vh] bg-amber-500 w-full flex items-center justify-center'>
-          <p>Lädt...</p>
-        </section>
-      </main>
-    );
+    notFound();
   }
 
   const bgColor = pokemonTypesColors[pokemonData.results.type[0]['en']].bgColor;
@@ -103,6 +102,6 @@ export default async function Home({
         className={`anchor flex flex-col pb-64 items-center justify-center px-4 md:px-0 z-0`}>
         <PokemonVideo pokemon={pokemonData.results.names[locale]}></PokemonVideo>
       </section>
-    </main >
+    </main>
   );
 }

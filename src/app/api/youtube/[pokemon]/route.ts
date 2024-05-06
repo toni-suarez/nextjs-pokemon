@@ -14,7 +14,7 @@ export async function GET(request: NextRequest, context: { params: { pokemon: st
     const newData = await fetchYouTubeData(pokemon);
 
     if (!newData || !newData.items || newData.items.length === 0) {
-      return NextResponse.json({ status: 404, videoId: 'sC0fttPh-As', snippet: defaultVideoSnippet });
+      return NextResponse.json({ status: 200, videoId: 'sC0fttPh-As', snippet: defaultVideoSnippet });
     }
 
     return NextResponse.json({ status: 200, videoId: newData.items[0].id.videoId, snippet: newData.items[0].snippet });

@@ -1,6 +1,6 @@
 "use client"
 
-import { IPokemon } from "@/api/pokedex";
+import { IPokemon } from "@/data/pokedex";
 import { motion } from 'framer-motion';
 import { cn } from '@/utils/cn';
 
