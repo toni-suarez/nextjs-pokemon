@@ -4,8 +4,6 @@
 
 This Next.js application provides a comprehensive Pokémon experience, offering an overview of 1025 Pokémon spanning across 9 generations. With its server-side rendering (SSR) capabilities and internationalization (i18n) support for both German and English, users can seamlessly navigate through the Pokémon world.
 
-[Visit the project](https://nextjs-pokemon-overview.vercel.app/)
-
 ## Features
 
 ### Pokémon Overview
